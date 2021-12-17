@@ -1,14 +1,16 @@
-
-import './App.css';
+import Header from "./components/Header";
+// import './App.css';
 
 function App() {
+
+
   return (
 
     // jsx
-    <div className="App">
-     <h1>Ian Greenblott</h1>
+    <div className='container'>
+     <Header title={'Ian Greenblott'}/>
     </div>
-  );
+  )
 }
 
 export default App;
