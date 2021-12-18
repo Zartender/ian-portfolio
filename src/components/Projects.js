@@ -1,8 +1,16 @@
-const Projects = ({ projects }) => {
+import Project from './Project'
+
+
+const Projects = ({ projects, onDelete, onToggle}) => {
     return (
         <>
             {projects.map((project) => (
-                <h3 key={project.id}>{project.heading}</h3>
+                <Project 
+                key={project.id} 
+                project={project} 
+                onDelete={onDelete}
+                onToggle={onToggle}
+                />
             ))}
         </>
     )

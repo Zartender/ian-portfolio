@@ -32,13 +32,23 @@ function App() {
 
 ])
 
+// Delete Project
+const deleteProject = (id) => {
+  setProjects(projects.filter((project) => project.id !== 
+  id))
+}
+
+// Toggle Reiminder
+const toggleReminder = (id) => {
+  console.log(id)
+}
 
   return (
 
     // jsx
     <div className='container'>
      <Header title={'Ian Greenblott'}/>
-     <Projects projects={projects}/>
+     {projects.length > 0 ?<Projects projects={projects} onDelete={deleteProject} onToggle={toggleReminder}/> : 'No Projects to Show'}
     </div>
   )
 }
