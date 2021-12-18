@@ -1,36 +1,50 @@
 import { useState } from "react"
 import Header from "./components/Header";
 import Projects from "./components/Projects";
+import AddProject from "./components/AddProject";
 
 
 // import './App.css';
 
 function App() {
+  const[showAddProject, setShowAddProject] = useState
+  (false)
 
   const [projects, setProjects] = useState([
     {
         id: 1,
-        heading: 'Project 1',
-        biography: 'This is my experience',
+        projectTitle: 'Project 1',
+        text: 'This is my experience',
         background: 'Background and Proifiencies',
+        reminder: true,
 
     },
     {
         id: 2,
-        heading: 'Project 2',
-        biography: 'This is my experience',
+        projectTitle: 'Project 2',
+        text: 'This is my experience',
         background: 'Background and Proifiencies',
+        reminder: true,
 
     },
     {
         id: 3,
-        heading: 'Project 3',
-        biography: 'This is my experience',
+        projectTitle: 'Project 3',
+        text: 'This is my experience',
         background: 'Background and Proifiencies',
+        reminder: true,
 
     },
 
 ])
+
+// Add Projct
+const addProject = (project) => {
+  const id = Math.floor(Math.random() * 10000) + 1
+  const newProject = { id, ...project} 
+  setProjects([...projects, newProject])
+}
+
 
 // Delete Project
 const deleteProject = (id) => {
@@ -40,6 +54,9 @@ const deleteProject = (id) => {
 
 // Toggle Reiminder
 const toggleReminder = (id) => {
+  setProjects(projects.map((project) => project.id === id ? 
+  {...project, reminder: !project.reminder } : project)
+  )
   console.log(id)
 }
 
@@ -47,8 +64,14 @@ const toggleReminder = (id) => {
 
     // jsx
     <div className='container'>
-     <Header title={'Ian Greenblott'}/>
-     {projects.length > 0 ?<Projects projects={projects} onDelete={deleteProject} onToggle={toggleReminder}/> : 'No Projects to Show'}
+     <Header onAdd={() => setShowAddProject
+    (!showAddProject)} />
+     {showAddProject && <AddProject onAdd={addProject} />}
+     {projects.length > 0 ?<Projects 
+     projects={projects} 
+     onDelete={deleteProject} 
+     onToggle={toggleReminder}
+     /> : 'No Projects to Show'}
     </div>
   )
 }
