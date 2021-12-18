@@ -1,8 +1,11 @@
+
 import { useState, useEffect } from "react"
+// import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from "./components/Header";
 import Projects from "./components/Projects";
 import AddProject from "./components/AddProject";
-
+import Footer from "./components/Footer";
+// import { About } from "./components/About";
 
 // import './App.css';
 
@@ -109,6 +112,7 @@ const App = () => {
       ) : (
         'No Projects to Show'
       )}
+      <Footer />
     </div>
   )
 }
