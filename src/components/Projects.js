@@ -4,9 +4,9 @@ import Project from './Project'
 const Projects = ({ projects, onDelete, onToggle}) => {
     return (
         <>
-            {projects.map((project) => (
+            {projects.map((project, index) => (
                 <Project 
-                key={project.id} 
+                key={index} 
                 project={project} 
                 onDelete={onDelete}
                 onToggle={onToggle}

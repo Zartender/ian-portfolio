@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "projectTitle": "Project 1",
+      "text": "This is my experience",
+      "background": "Background and Proifiencies",
+      "reminder": false
+    },
+    {
+      "id": 2,
+      "projectTitle": "Project 2",
+      "text": "This is my experience",
+      "background": "Background and Proifiencies",
+      "reminder": false
+    },
+    {
+      "projectTitle": "test",
+      "text": "this is a test",
+      "day": "wendesday the 12th",
+      "reminder": false,
+      "id": 3
+    },
+    {
+      "projectTitle": "this is a test ",
+      "text": "will this work this time",
+      "day": "maybe",
+      "reminder": false,
+      "id": 4
+    }
+  ]
+}

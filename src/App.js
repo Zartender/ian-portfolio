@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Header from "./components/Header";
 import Projects from "./components/Projects";
 import AddProject from "./components/AddProject";
@@ -6,58 +6,91 @@ import AddProject from "./components/AddProject";
 
 // import './App.css';
 
-function App() {
+const App = () => {
   const [showAddProject, setShowAddProject] = useState
     (false)
 
-  const [projects, setProjects] = useState([
-    {
-      id: 1,
-      projectTitle: 'Project 1',
-      text: 'This is my experience',
-      background: 'Background and Proifiencies',
-      reminder: true,
+  const [projects, setProjects] = useState([])
 
-    },
-    {
-      id: 2,
-      projectTitle: 'Project 2',
-      text: 'This is my experience',
-      background: 'Background and Proifiencies',
-      reminder: true,
+  // Effect
+  useEffect(() => {
+    const getProjects = async () => {
+      const projectsFromServer = await fetchProjects()
+      setProjects(projectsFromServer)
+    }
+    getProjects()
+  }, [])
 
-    },
-    {
-      id: 3,
-      projectTitle: 'Project 3',
-      text: 'This is my experience',
-      background: 'Background and Proifiencies',
-      reminder: true,
+  //  fetch prjects
+  const fetchProjects = async () => {
+    const res = await fetch('http://localhost:5000/projects')
+    const data = await res.json()
 
-    },
+    return data
 
-  ])
+  }
+
+  const fetchProject = async (id) => {
+    const res = await fetch(`http://localhost:5000/projects/${id}`)
+    const data = await res.json()
+
+    return data
+
+  }
+
+
+
 
   // Add Projct
-  const addProject = (project) => {
-    const id = Math.floor(Math.random() * 10000) + 1
-    const newProject = { id, ...project }
-    setProjects([...projects, newProject])
+  const addProject = async (project) => {
+    const res = await fetch(`http://localhost:5000/projects`, {
+      method: 'POST', 
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(project)
+    })
+
+    const data = await res.json()
+    setProjects([...projects, data])
+
+    // const id = Math.floor(Math.random() * 10000) + 1
+    // const newProject = { id, ...project }
+    // setProjects([...projects, newProject])
   }
 
 
   // Delete Project
-  const deleteProject = (id) => {
+  const deleteProject = async (id) => {
+    await fetch(`http://localhost:5000/projects/${id}`, {
+      method: 'DELETE'
+    })
+
+    
     setProjects(projects.filter((project) => project.id !==
       id))
   }
 
   // Toggle Reiminder
-  const toggleReminder = (id) => {
-    setProjects(projects.map((project) => project.id === id ?
-      { ...project, reminder: !project.reminder } : project)
+  const toggleReminder = async (id) => {
+    const projectToToggle = await fetchProject(id)
+    const updProject = { ...projectToToggle,
+    reminder: !projectToToggle.reminder }
+  
+    const res = await fetch(`http://localhost:5000/projects/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(updProject)
+      })
+      const data = await res.json ()
+    
+    setProjects(
+      projects.map((project) => 
+      project.id === id ? { ...project, reminder: data.reminder } : project
+      )
     )
-    console.log(id)
   }
 
   return (
