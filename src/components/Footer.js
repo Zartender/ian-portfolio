@@ -6,7 +6,8 @@ export const Footer = () => {
            <p>
                Ian Greenblott Portfolio 2021
            </p>
-           <Link to='/about'>About</Link>
+           
+           <Link to='/'>Projects List Functionality Test</Link>
        </footer>
     )
 }

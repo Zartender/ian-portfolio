@@ -23,14 +23,14 @@ const Header = ({ title, onAdd, showAdd }) => {
         />
         )}
         <Link to='/about'>About</Link>
-        <Link to='/projects'>Projects</Link>
+        <Link to='/portfolio'>Portfolio</Link>
         <Link to='/contact'>Contact</Link>
         </header>
     )
 }
 
 Header.defaultProps = {
-    title: 'Portfolio',
+    title: 'Ian Greenblott',
 }
 
 Header.propTypes = {

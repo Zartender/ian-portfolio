@@ -7,6 +7,7 @@ import Projects from "./components/Projects"
 import AddProject from "./components/AddProject"
 import About from "./components/About"
 import Contact from "./components/Contact"
+import Portfolio from "./components/Portfolio"
 
 // import './App.css';
 
@@ -128,6 +129,7 @@ const App = () => {
           />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/portfolio' element={<Portfolio />} />
         </Routes>
         <Footer />
       </div>
