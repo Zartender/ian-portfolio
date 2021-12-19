@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
 import Button from './Button'
+import { Link } from "react-router-dom"
+
+
 
 
 const Header = ({ title, onAdd, showAdd }) => {
@@ -19,6 +22,9 @@ const Header = ({ title, onAdd, showAdd }) => {
         onClick={onAdd}
         />
         )}
+        <Link to='/about'>About</Link>
+        <Link to='/projects'>Projects</Link>
+        <Link to='/contact'>Contact</Link>
         </header>
     )
 }
