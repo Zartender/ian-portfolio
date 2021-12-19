@@ -110,23 +110,7 @@ const App = () => {
           showAdd={showAddProject}
         />
         <Routes>
-          <Route
-            path='/'
-            element={
-              <>
-                {showAddProject && <AddProject onAdd={addProject} />}
-                {projects.length > 0 ? (
-                  <Projects
-                    projects={projects}
-                    onDelete={deleteProject}
-                    onToggle={toggleReminder}
-                  />
-                ) : (
-                  'No Projects to Show'
-                )}
-              </>
-            }
-          />
+          {/* <Route path='/'/> */}
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/portfolio' element={<Portfolio />} />
