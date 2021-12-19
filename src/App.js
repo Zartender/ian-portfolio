@@ -1,11 +1,11 @@
 
 import { useState, useEffect } from "react"
-// import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Header from "./components/Header";
-import Projects from "./components/Projects";
-import AddProject from "./components/AddProject";
-import Footer from "./components/Footer";
-// import { About } from "./components/About";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import Projects from "./components/Projects"
+import AddProject from "./components/AddProject"
+import About from "./components/About"
 
 // import './App.css';
 
@@ -47,7 +47,7 @@ const App = () => {
   // Add Projct
   const addProject = async (project) => {
     const res = await fetch(`http://localhost:5000/projects`, {
-      method: 'POST', 
+      method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
@@ -69,7 +69,7 @@ const App = () => {
       method: 'DELETE'
     })
 
-    
+
     setProjects(projects.filter((project) => project.id !==
       id))
   }
@@ -77,43 +77,59 @@ const App = () => {
   // Toggle Reiminder
   const toggleReminder = async (id) => {
     const projectToToggle = await fetchProject(id)
-    const updProject = { ...projectToToggle,
-    reminder: !projectToToggle.reminder }
-  
+    const updProject = {
+      ...projectToToggle,
+      reminder: !projectToToggle.reminder
+    }
+
     const res = await fetch(`http://localhost:5000/projects/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
       },
       body: JSON.stringify(updProject)
-      })
-      const data = await res.json ()
-    
+    })
+    const data = await res.json()
+
     setProjects(
-      projects.map((project) => 
-      project.id === id ? { ...project, reminder: data.reminder } : project
+      projects.map((project) =>
+        project.id === id ? { ...project, reminder: data.reminder } : project
       )
     )
   }
 
   return (
+    <Router>
 
-    // jsx
-    <div className='container'>
-      <Header
-        onAdd={() => setShowAddProject
-          (!showAddProject)}
-        showAdd={showAddProject}
-      />
-      {showAddProject && <AddProject onAdd={addProject} />}
-      {projects.length > 0 ? (
-        <Projects projects={projects} onDelete=
-          {deleteProject} onToggle={toggleReminder} />
-      ) : (
-        'No Projects to Show'
-      )}
-      <Footer />
-    </div>
+      <div className='container'>
+        <Header
+          onAdd={() => setShowAddProject
+            (!showAddProject)}
+          showAdd={showAddProject}
+        />
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <>
+                {showAddProject && <AddProject onAdd={addProject} />}
+                {projects.length > 0 ? (
+                  <Projects
+                    projects={projects}
+                    onDelete={deleteProject}
+                    onToggle={toggleReminder}
+                  />
+                ) : (
+                  'No Projects to Show'
+                )}
+              </>
+            }
+          />
+          <Route path='/about' element={<About />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   )
 }
 

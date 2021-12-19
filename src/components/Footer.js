@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from "react-router-dom"
 
 export const Footer = () => {
     return (
@@ -6,8 +6,10 @@ export const Footer = () => {
            <p>
                Ian Greenblott Portfolio 2021
            </p>
-           <a href='/Footer'/>
+           <Link to='/about'>About</Link>
        </footer>
     )
 }
  export default Footer
+
+ 
