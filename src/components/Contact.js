@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 const Contact = () => {
     return (
         <div>
-            <h3>Get at me.</h3>
+            <h3>Contact Me Here.</h3>
             <a href="tel:6142829107" target="_blank"><h2>Phone</h2></a>
             <a href="mailto:imgreenblott@gmail.com" target="_blank"><h2>Email</h2></a>
             <a href="https://github.com/Zartender" target="_blank"><h2>GitHub</h2></a>
