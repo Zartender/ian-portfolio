@@ -22,9 +22,9 @@ const Header = ({ title, onAdd, showAdd }) => {
         onClick={onAdd}
         />
         )}
-        <Link to='/about'>About</Link>
-        <Link to='/portfolio'>Portfolio</Link>
-        <Link to='/contact'>Contact</Link>
+        <Link style={linkStyle} onClick={linkStyleClick} to='/about'>About</Link>
+        <Link style={linkStyle} onClick={linkStyleClick} to='/portfolio'>Portfolio</Link>
+        <Link style={linkStyle} onClick={linkStyleClick} to='/contact'>Contact</Link>
         </header>
     )
 }
@@ -38,7 +38,23 @@ Header.propTypes = {
 }
 
 const headingStyle = {
-    color: 'white', backgroundColor: 'red'
+    color: 'white', 
+    backgroundColor: 'pink',
+    justifyContent: 'center',
+}
+
+const linkStyle = {
+    color: 'black',
+    fontFamily: 'Helvetica',
+    textDecoration: 'none',
+}
+
+const linkStyleClick = (onClick, style) => {
+    style=
+    {color: 'pink',
+    fontFamily: 'Helvetica',
+    textDecoration: 'none',}
+
 }
 
 export default Header
