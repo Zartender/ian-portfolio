@@ -1,15 +1,11 @@
 import Project from './Project'
 
 
-const Projects = ({ projects, onDelete, onToggle}) => {
+const Projects = ({ projects }) => {
     return (
         <>
-            {projects.map((project, index) => (
+            {projects.map(() => (
                 <Project 
-                key={index} 
-                project={project} 
-                onDelete={onDelete}
-                onToggle={onToggle}
                 />
             ))}
         </>

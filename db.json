@@ -2,30 +2,27 @@
   "projects": [
     {
       "id": 2,
-      "projectTitle": "Project 2",
-      "text": "This is my experience",
-      "background": "Background and Proifiencies",
-      "reminder": false
+      "title": "Project 2",
+      "desc": "This is my experience",
+      "url": "Background and Proifiencies"
+      
     },
     {
-      "projectTitle": "test",
-      "text": "this is a test",
-      "day": "wendesday the 12th",
-      "reminder": false,
+      "title": "test",
+      "desc": "this is a test",
+      "url": "wendesday the 12th",
       "id": 3
     },
     {
-      "projectTitle": "this is a test ",
-      "text": "will this work this time",
-      "day": "maybe",
-      "reminder": false,
+      "title": "this is a test ",
+      "desc": "will this work this time",
+      "url": "maybe",
       "id": 4
     },
     {
-      "projectTitle": "New Test",
-      "text": "TEst",
-      "day": "TEsting",
-      "reminder": true,
+      "title": "New Test",
+      "desc": "TEst",
+      "url": "TEsting",
       "id": 5
     }
   ]

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Projects from "./components/Projects"
-import AddProject from "./components/AddProject"
+// import AddProject from "./components/AddProject"
 import About from "./components/About"
 import Contact from "./components/Contact"
 import Portfolio from "./components/Portfolio"
@@ -110,10 +110,12 @@ const App = () => {
           showAdd={showAddProject}
         />
         <Routes>
-          {/* <Route path='/'/> */}
+          
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/portfolio' element={<Portfolio />} />
+          <Route path='/projects' element={<Projects />} />
+
         </Routes>
         <Footer />
       </div>
