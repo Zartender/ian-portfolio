@@ -4,10 +4,10 @@ export const Footer = () => {
     return (
        <footer>
            <p>
-               Ian Greenblott React Portfolio 2021
+               React Portfolio 2021
            </p>
            
-           {/* <Link to='/'>Projects List Functionality Test</Link> */}
+           <h4>View <a href="https://github.com/Zartender" target="_blank">Resume</a></h4>
        </footer>
     )
 }

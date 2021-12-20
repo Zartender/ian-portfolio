@@ -2,7 +2,7 @@
 
 // I was was trying to add some mroe interesting functionality to this, 
 // I  must finish other assignments first. 
-const Project = ({ project }) => {
+const Project = () => {
     return (
         <div className='project'>
        
